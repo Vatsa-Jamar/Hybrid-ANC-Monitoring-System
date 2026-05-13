@@ -1,0 +1,33 @@
+# Components List: Smart Noise Cancellation & Secure IoT Monitoring System
+
+## 1. Analog ANC System ("Hardware Version")
+
+Active Components:
+* 1x BC547BP BJT Transistor [cite: 614]
+* 2x 741 General-Purpose Operational Amplifier (or equivalent, e.g., LM358) [cite: 615]
+
+Passive Components:
+* Resistors: 2x 1.2kΩ, 7x 10kΩ, 1x 56kΩ, 1x 330Ω [cite: 618]
+* Potentiometers: 2x 10kΩ [cite: 619]
+* Capacitors: 2x 0.2µF, 1x 47µF [cite: 620]
+
+Power Supply:
+* 1x 9V "HW" (Heavy-Duty) Battery [cite: 622]
+
+## 2. Digital IoT Monitoring System ("Software Version")
+
+Core Controller & Sensors:
+* 1x ESP-WROOM-32 Module [cite: 631]
+* 1x Electret Condenser Microphone (Sound Sensor / KY-037 module) [cite: 633, 675]
+
+Power System:
+* 1x 18650 Li-ion Battery (3.7V, 2000mAh) [cite: 636]
+* 1x TP4056 Li-ion Battery Charging Module (with Micro-USB) [cite: 637]
+
+## 3. Miscellaneous & Prototyping
+
+* 2x General-purpose Perfboard [cite: 640]
+* 1x On/Off Rocker Switch [cite: 641]
+* Connecting Wires (Jumper wires, solid core wires for PCB) [cite: 642]
+* Solder & Hot Glue [cite: 643]
+* Assorted Resistors and Capacitors (for biasing and filtering the microphone pre-amplification) [cite: 638, 639]

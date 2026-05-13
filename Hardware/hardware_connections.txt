@@ -1,0 +1,31 @@
+# Hardware Connections: Smart Noise Cancellation & Secure IoT Monitoring System
+
+Below is the complete wiring guide based on the ESP32 firmware and the analog circuit schematic.
+
+## 1. Digital IoT System (ESP32 & Sensors)
+
+ESP-WROOM-32 Pinout & Routing:
+* Pin 32 (Analog Input): Connected to the sound sensor for primary noise data acquisition.
+* Pin 34 (Analog Input): Connected to the secondary sensor or the analog output (A0) / digital output (DO) of the KY-037 module.
+* Pin 25 (DAC Output): Used to generate an analog voltage for local waveform output reflecting the sensor readings.
+
+Power Connections (Digital Board):
+* 18650 Li-ion Battery -> TP4056 Charger Module (B+ and B- terminals).
+* TP4056 Output (OUT+) -> ESP32 Vin / 3V3 Pin.
+* TP4056 Output (OUT-) -> ESP32 GND Pin.
+
+## 2. Analog Active Noise Cancellation (ANC) Circuit
+
+Power Connections (Analog Board)[cite: 700]:
+* 9V "HW" Battery -> On/Off Rocker Switch -> Circuit VCC (+9V).
+* Battery Negative -> Circuit Common Ground (GND).
+
+Microphone Preamplifier Stage[cite: 660, 702]:
+* Electret Microphone Output -> C1 (0.2 µF) -> Base of Q1 (BC547BP).
+* Q1 Collector -> C2 (0.1 µF) -> Input of the next Op-Amp stage.
+
+Op-Amp Signal Processing (741 ICs):
+* U2 (Phase Inverter): Receives the pre-amplified noise signal. Gain is controlled via potentiometer R12 (10kΩ) to match noise amplitude. 
+* U1 (Summing Amplifier): Takes the inverted anti-noise signal from U2 (via R8) and the main signal (via R1) and sums them destructively. Gain is tuned via potentiometer R7 (10kΩ).
+
+Integration Note: The processed analog signals from the Op-Amps can also be routed to the ESP32's analog input pins (like Pin 34) for digital monitoring[cite: 674, 693]. Ensure that the GND of the analog circuit and the GND of the ESP32 are connected together if signals are shared between the two boards.
